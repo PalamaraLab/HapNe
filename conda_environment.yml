@@ -1,0 +1,14 @@
+name: HapNe
+channels:
+  - conda-forge
+  - bioconda
+  - defaults
+dependencies:
+  - python
+  - pytest
+  - numpy
+  - pandas
+  - plink
+  - plink2
+  - flake8
+  - numba
