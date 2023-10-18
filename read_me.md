@@ -2,17 +2,37 @@
 Haplotype-based inference of recent effective population size in modern and ancient DNA samples
 
 ## Summary 
-1. Prerequisites 
-2. HapNe-LD
-3. HapNe-IBD
-4. Analyses of ancient samples 
-5. How to cite
+1. System Requirements 
+2. Installation Guide
+3. Demo
+4. Instructions for use
 
-## 1. Prerequisites
-Some pre-processing features require plink1.9 and plink2 to be installed. 
-HapNe assumes that the commands `plink` and `plink2` work in the terminal.
+    4.1 HapNe-LD
+    
+    4.2 HapNe-IBD
 
-All functionalities have been tested on macOS and Linux within the following conda environment: 
+    4.3 Analyses of ancient samples
+5. Understanding the output
+6. FAQ
+7. How to cite
+8. Acknowledgements
+
+## 1. System Requirements
+The software dependencies are listed in the conda_environment.yml and setup.cfg files. 
+The software works on Unix systems (Linux and macOS).
+The software has been tested on macOS (Ventura 13.3.1, M1 and Intel) and Linux (Ubuntu 22.04.3 LTS). 
+It does not require non-standard hardware.
+
+## 2. Installation Guide
+If `plink` and `plink2` are already installed on your system, you can install HapNe using pip:
+
+`pip install hapne`
+
+However, we strongly recommend to install HapNe within a conda environment by running:
+
+`conda env create --file conda_environment.yml`
+
+using the following conda_environment.yml file (~ 5 minutes):
 
 ```yml
 name: HapNe
@@ -30,10 +50,18 @@ dependencies:
   - flake8
   - numba
 ```
-We strongly encourage to install HapNe within this environment by running: 
-`conda env create --file conda_environment.yml`
+You can then install HapNe using pip (1 minute):
+`pip install hapne`
 
-## 2. HapNe-LD
+If you wish to modify the code, you can install HapNe in editable mode by running `pip install .` within this repository. 
+
+## 3. Demo
+The `tests` folder contains a demo for all functionalities of HapNe, and the expected output of each functionality.
+
+Running `pytest tests` is typically done in less than 20 minutes. 
+
+## 4. Instructions for use
+### 4.1 HapNe-LD
 HapNe-LD can be run by adapting the following config file:
 ```
 [CONFIG]
@@ -80,7 +108,7 @@ if __name__ == "__main__":
     hapne_ld(config)
 ```
 
-# 3. Running HapNe-IBD
+### 4.2 HapNe-IBD
 Running HapNe-IBD requires the use of an IBD detection software as a first step. We recommend using [HapIBD](https://doi.org/10.1016/j.ajhg.2020.02.010) with the postprocessing tool provided [here](https://faculty.washington.edu/browning/refined-ibd.html#gaps), following the instructions and recommendations from the publications and website. 
 
 HapNe requires the IBD software to be run on each chromosome arm separately. It is possible to split a single vcf file into multiple files corresponding to each chromosome arm by using the following script:
@@ -130,7 +158,7 @@ if __name__ == "__main__":
     hapne_ibd(config)
 ```
 
-## 4. aDNA analyses
+### 4.3 Analyses of ancient samples
 HapNe provides a pipeline to easily study samples from the ["Allen Ancient DNA Resource" data set](https://reich.hms.harvard.edu/allen-ancient-dna-resource-aadr-downloadable-genotypes-present-day-and-ancient-dna-data).
 After downloading the data, HapNe can take a file with the indices of samples to study as input (Caribbean_Ceramic_recent.keep in the following example).
 
@@ -186,14 +214,15 @@ if __name__ == "__main__":
     hapne_ld(config)
 ```
 
-# 5. How to cite? 
+## 5. Understanding the output
+HapNe creates different folders in the output folder provided in the config file. The main output is written in the HapNe folder. It contains the following files:
+* `config.ini` : copy of the config file used
+* `summary.txt` : summary of the analysis, with warnings cautioning about potential biases. 
+* `hapne.csv` : The effective population size at each generation. The csv files contains the Maximum-Likelihood estimate (MLE), as well as the estimated quantiles (0.025, 0.25, 0.5, 0.75, 0.975) obtained from the bootstrap procedure.
+* `assessment.png` : visualization of the Pearson residuals of each chromosome arm. The residuals should be normally distributed, and centered around 0.
+* `hapne_results.png` : A visual representation of the results. The blue line represents the MLE, and the light-shaded area represents the 95% confidence interval.
 
-If you use this software, please cite:
-
-R. Fournier, D. Reich, P. Palamara. Haplotype-based inference of recent effective population size in modern and ancient DNA samples. (preprint) bioRxiv, 2022.
-
-# 6. FAQ
-
+## 6. FAQ
 ### HapNe-IBD
 1. **I am observing wild oscillations in HapNe output**
 
@@ -201,7 +230,7 @@ R. Fournier, D. Reich, P. Palamara. Haplotype-based inference of recent effectiv
 
 2. **I get a flat output with small confidence intervals**
 
-   Check the summary message in the output folder. This situation is generally encountered when there is no signal in the dataset, and HapNe relies on its prior (flat demographic history).
+   Check the summary message in the output folder. This situation is generally encountered when there is no signal in the dataset, and HapNe relies on its prior (flat demographic history). This scenario is flagged by a warning in the summary message.
 
 ### HapNe-LD
 1. **The summary message contains a warning about CCLD**
@@ -215,9 +244,14 @@ R. Fournier, D. Reich, P. Palamara. Haplotype-based inference of recent effectiv
 
 3. **I get a flat output with small confidence intervals**
 
-   Check the summary message in the output folder. This situation is generally encountered when there is no signal in the dataset, and HapNe relies on its prior (flat demographic history).
+   Check the summary message in the output folder. This situation is generally encountered when there is no signal in the dataset, and HapNe relies on its prior (flat demographic history). This scenario is flagged by a warning in the summary message.
 
-# Acknowledgments  
+## 7. How to cite? 
+If you use this software, please cite:
+
+R. Fournier, D. Reich, P. Palamara. Haplotype-based inference of recent effective population size in modern and ancient DNA samples. (preprint) bioRxiv, 2022.
+
+## 8. Acknowledgements
 Two scripts of the `convert` module were downloaded from the following repositories and edited to fit into this package:
-- "https://github.com/mathii/pyEigenstrat" 
-- "https://github.com/mathii/gdc"
+- https://github.com/mathii/pyEigenstrat
+- https://github.com/mathii/gdc
