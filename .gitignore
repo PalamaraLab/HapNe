@@ -4,7 +4,6 @@ tests/files/Foragers/Foragers.vcf.gz
 tests/files/const/LD/*
 tests/files/const_test_ibd_fixed/*
 tests/files/const_test_ld_fixed/*
-HapNe
 tests/files/Foragers/DATA/*.map
 tests/files/Foragers/DATA/*.irem
 tests/files/Foragers/DATA/*.nosex
@@ -138,36 +137,5 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
-tests/files/Foragers/Foragers.chr1.from143199864.to249222527.bed
-tests/files/Foragers/Foragers.chr1.from143199864.to249222527.bim
-tests/files/Foragers/Foragers.chr1.from143199864.to249222527.fam
-tests/files/Foragers/Foragers.chr1.from143199864.to249222527.map
-tests/files/Foragers/Foragers.chr1.from143199864.to249222527.nosex
-tests/files/Foragers/Foragers.vcf
 tests/files/const_test_ld/HapNe/hapne.csv
 tests/files/const_test_ibd/HapNe/hapne.csv
-tests/files/Foragers/OUTPUT/Foragers.vcf.gz
-tests/files/Foragers/OUTPUT/GENOTYPE/chr1.from752721.to121475791.bed
-tests/files/Foragers/OUTPUT/GENOTYPE/chr1.from752721.to121475791.bim
-tests/files/Foragers/OUTPUT/GENOTYPE/chr1.from752721.to121475791.fam
-tests/files/Foragers/OUTPUT/GENOTYPE/chr1.from752721.to121475791.map
-tests/files/Foragers/OUTPUT/GENOTYPE/chr1.from752721.to121475791.nosex
-tests/files/Foragers/OUTPUT/GENOTYPE/chr22.from16057417.to51193629.bed
-tests/files/Foragers/OUTPUT/GENOTYPE/chr22.from16057417.to51193629.bim
-tests/files/Foragers/OUTPUT/GENOTYPE/chr22.from16057417.to51193629.fam
-tests/files/Foragers/OUTPUT/GENOTYPE/chr22.from16057417.to51193629.map
-tests/files/Foragers/OUTPUT/GENOTYPE/chr22.from16057417.to51193629.nosex
-tests/files/Foragers/OUTPUT/Foragers.vcf
-tests/files/Foragers/DATA/Foragers.vcf.gz
-tests/files/Foragers/DATA/population.vcf.gz
-tests/files/Foragers/DATA/GENOTYPES/chr1.from752721.to121475791.bed
-tests/files/Foragers/DATA/GENOTYPES/chr1.from752721.to121475791.bim
-tests/files/Foragers/DATA/GENOTYPES/chr1.from752721.to121475791.fam
-tests/files/Foragers/DATA/GENOTYPES/chr1.from752721.to121475791.map
-tests/files/Foragers/DATA/GENOTYPES/chr1.from752721.to121475791.nosex
-tests/files/Foragers/DATA/GENOTYPES/chr22.from16057417.to51193629.bed
-tests/files/Foragers/DATA/GENOTYPES/chr22.from16057417.to51193629.bim
-tests/files/Foragers/DATA/GENOTYPES/chr22.from16057417.to51193629.fam
-tests/files/Foragers/DATA/GENOTYPES/chr22.from16057417.to51193629.map
-tests/files/Foragers/DATA/GENOTYPES/chr22.from16057417.to51193629.nosex
-tests/files/Foragers/DATA/Foragers.vcf
