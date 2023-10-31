@@ -187,8 +187,8 @@ from configparser import ConfigParser
 import pandas as pd
 import argparse
 
-from hapne.convert.eigenstrat2vcf import eigenstrat2vcf
-from hapne.convert.eigenstrat2vcf import split_convert_vcf
+from hapne.convert.tools import eigenstrat2vcf
+from hapne.convert.tools import split_convert_vcf
 from hapne.ld import compute_ld, compute_ccld, create_cc_file
 from hapne.utils import get_age_from_anno
 from hapne import hapne_ld
