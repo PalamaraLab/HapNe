@@ -1,21 +1,17 @@
 # HapNe
 Haplotype-based inference of recent effective population size in modern and ancient DNA samples
 
-## Summary 
-1. System Requirements 
-2. Installation Guide
-3. Demo
-4. Instructions for use
-
-    4.1 HapNe-LD
-    
-    4.2 HapNe-IBD
-
-    4.3 Analyses of ancient samples
-5. Understanding the output
-6. FAQ
-7. How to cite
-8. Acknowledgements
+1. [System Requirements](#1-system-requirements)
+2. [Installation Guide](#2-installation-guide)
+3. [Demo](#3-demo)
+4. [Instructions for use](#4-instructions-for-use)
+    - [4.1 HapNe-LD](#41-hapne-ld)
+    - [4.2 HapNe-IBD](#42-hapne-ibd)
+    - [4.3 Analyses of ancient samples](#43-analyses-of-ancient-samples)
+5. [Understanding the output](#5-understanding-the-output)
+6. [FAQ](#6-faq)
+7. [How to cite](#7-how-to-cite)
+8. [Acknowledgements](#8-acknowledgements)
 
 ## 1. System Requirements
 The software dependencies are listed in the conda_environment.yml and setup.cfg files. 
@@ -247,10 +243,10 @@ HapNe creates different folders in the output folder provided in the config file
    Check the summary message in the output folder. This situation is generally encountered when there is no signal in the dataset, and HapNe relies on its prior (flat demographic history). This scenario is flagged by a warning in the summary message. Please refer to our manuscript for additional details.
 
 
-## 7. Citation? 
+## 7. Citation
 If you use this software, please cite:
 
-R. Fournier, Z. Tsangalidou, D. Reich, P. Palamara. Haplotype-based inference of recent effective population size in modern and ancient DNA samples. Nature Communications, in press.
+R. Fournier, Z. Tsangalidou, D. Reich, P. Palamara. Haplotype-based inference of recent effective population size in modern and ancient DNA samples. Nature Communications, 2023.
 
 ## 8. Acknowledgements
 Two scripts of the `convert` module were downloaded from the following repositories and edited to fit into this package:
