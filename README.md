@@ -1,5 +1,5 @@
 # HapNe
-Haplotype-based inference of recent effective population size in modern and ancient DNA samples
+Haplotype-based inference of recent effective population size in modern and ancient DNA samples.
 
 1. [System Requirements](#1-system-requirements)
 2. [Installation Guide](#2-installation-guide)
@@ -10,7 +10,7 @@ Haplotype-based inference of recent effective population size in modern and anci
     - [4.3 Analyses of ancient samples](#43-analyses-of-ancient-samples)
 5. [Understanding the output](#5-understanding-the-output)
 6. [FAQ](#6-faq)
-7. [How to cite](#7-how-to-cite)
+7. [Citation](#7-citation)
 8. [Acknowledgements](#8-acknowledgements)
 
 ## 1. System Requirements
@@ -219,6 +219,15 @@ HapNe creates different folders in the output folder provided in the config file
 * `hapne_results.png` : A visual representation of the results. The blue line represents the MLE, and the light-shaded area represents the 95% confidence interval.
 
 ## 6. FAQ
+### General Questions
+1. **Can HapNe be used to analyze non-human data?**
+
+Our testing has been limited to human-like evolutionary models. HapNe may also work in non-human data, but we recommend using simulations to test the accuracy under other evolutionary settings. We are also updating the software to allow using non-human genome builds and welcome suggestions on how to facilitate these analyses.
+
+2. **Can HapNe be used to infer population sizes beyond 100 generations ago?**
+
+Depending on the sample size and the demography, HapNe might be able to infer fluctuations at times older than 100 generations. We have not extensively tested this, so we recommend running simulations to verify the accuracy under specific evolutionary parameters. The software can be used to infer Ne at times deeper than the default 100 generations by setting the `t_max` in parameter in the config file. It may also be useful to modify the number of inferred parameters, `nb_parameters`, and the maximum length of a time interval in the output, `dt_max`.
+
 ### HapNe-LD
 1. **The summary message contains a warning about CCLD**
 
