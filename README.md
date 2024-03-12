@@ -214,9 +214,11 @@ if __name__ == "__main__":
 HapNe creates different folders in the output folder provided in the config file. The main output is written in the HapNe folder. It contains the following files:
 * `config.ini` : copy of the config file used
 * `summary.txt` : summary of the analysis, with warnings cautioning about potential biases. 
-* `hapne.csv` : The effective population size at each generation. The csv files contains the Maximum-Likelihood estimate (MLE), as well as the estimated quantiles (0.025, 0.25, 0.5, 0.75, 0.975) obtained from the bootstrap procedure.
+* `hapne.csv` : The haploid effective population size at each generation. The csv files contains the Maximum-Likelihood estimate (MLE), as well as the estimated quantiles (0.025, 0.25, 0.5, 0.75, 0.975) obtained from the bootstrap procedure.
 * `assessment.png` : visualization of the Pearson residuals of each chromosome arm. The residuals should be normally distributed, and centered around 0.
 * `hapne_results.png` : A visual representation of the results. The blue line represents the MLE, and the light-shaded area represents the 95% confidence interval.
+
+**Note: the population size produced in output by HapNe is haploid (divide by 2 to obtain diploid size estimates).**
 
 ## 6. FAQ
 ### General Questions
