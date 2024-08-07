@@ -144,6 +144,8 @@ Using this config file, HapNe-IBD can be run using the following script:
 ```python
 from configparser import ConfigParser
 from hapne.ibd import build_hist
+import argparse
+from hapne import hapne_ibd
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='HapNe-IBD preprocessing pipeline')
