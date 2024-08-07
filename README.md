@@ -107,7 +107,8 @@ if __name__ == "__main__":
 ### 4.2 HapNe-IBD
 Running HapNe-IBD requires the use of an IBD detection software as a first step. Experiments in the HapNe paper used [HapIBD](https://doi.org/10.1016/j.ajhg.2020.02.010) with the postprocessing tool provided [here](https://faculty.washington.edu/browning/refined-ibd.html#gaps), following the instructions and recommendations from the publications and website. 
 
-HapNe requires the IBD software to be run on each chromosome arm separately. It is possible to split a single vcf file into multiple files corresponding to each chromosome arm by using the following script:
+As input, HapNe-IBD considers IBD length histograms that are split by chromosome arm. We provide a naive pipeline that can make it easier to get the desired outcome.
+Starting from a vcf file with phased samples containing all chromosomes, the pipeline allows splitting the vcf file by chromosome arm:
 
 ```python
 from hapne.convert.tools import split_vcf
@@ -121,26 +122,38 @@ where:
 
 The method will create 39 new vcfs files in the save_in folder. You can then run HapIBD on each of these files separately, and create *.ibd.gz files following the same naming convention.
 
+For example, you can use a script like:
+```
+for file in ./data/*.vcf.gz
+do
+    CHR=$(echo $file | awk -F'chr' '{print $2}' | awk -F'.' '{print $1}')
+    PREFIX=$(echo $file | awk -F'.vcf.gz' '{print $1}' | awk -F'/' '{print $NF}')
+    java -jar hap-ibd.jar gt=$file map=plink.chr$CHR.GRCh38.map  out=IBD/$PREFIX
+    echo "Hap-IBD done for $file"
+done
+```
+Do not forget to merge ibd and hbd files if you use this script. It is also recommended to merge adjacent segments.
+
 HapNe-IBD requires a config file to set the following options:
 ```
 [CONFIG]
-vcf_file=data
-keep=data.keep
-map=genetic_map_chr@_combined_b37.txt
-pseudo_diploid=False
-output_folder=HapNe/data
-population_name=POP
-ibd_files=OUTPUT_OF_HAPIBD
-column_cm_length=9
-genome_build=grch37 # or grch38
+output_folder=output_folder
+nb_samples=nb_diploid_samples_in_analysis
+population_name=pop_name
+ibd_files=output_folder_of_ibd_files
+column_cm_length=8
+genome_build=grch38
 ```
 Where:
 * column_cm_length is the index of the column containing the length (in centimorgans) for each IBD segment in the ibd.gz file.
+* nb_samples is the number of diploid samples, aka the number of individuals, used in the analysis.
 
 Using this config file, HapNe-IBD can be run using the following script:
 ```python
 from configparser import ConfigParser
 from hapne.ibd import build_hist
+import argparse
+from hapne import hapne_ibd
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='HapNe-IBD preprocessing pipeline')

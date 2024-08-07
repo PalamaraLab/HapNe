@@ -198,7 +198,8 @@ def vcf2fastsmc_in_parallel(index: int, config: ConfigParser) -> None:
     os.system(command)
 
 
-def split_vcf(vcf_file: str, save_in: str, keep=None, genome_build='grch37') -> None:
+def split_vcf(vcf_file: str, save_in: str, keep=None, genome_build='grch37',
+              threads=1) -> None:
     """
     Split the VCF file into multiple vcf files corresponding to each chromosome arm.
     :param vcf_file: Path to the vcf fiel
@@ -210,10 +211,11 @@ def split_vcf(vcf_file: str, save_in: str, keep=None, genome_build='grch37') -> 
         raise ValueError("genome_build must be either grch37 or grch38")
 
     for ii in range(39):
-        vcf2fastsmc_in_parallel(ii, vcf_file, save_in, keep, genome_build)
+        split_vcf_in_parallel(ii, vcf_file, save_in, keep, genome_build, threads)
 
 
-def split_vcf_in_parallel(index: int, vcf_loc: str, save_in: str, keep=None, genome_build='grch37') -> None:
+def split_vcf_in_parallel(index: int, vcf_loc: str, save_in: str, keep=None, genome_build='grch37',
+                          threads=1) -> None:
     # check if ii in between 0 and 38
     if not (0 <= index < 39):
         raise ValueError(f"index must be between 0 and 38, but index={index}")
@@ -237,7 +239,7 @@ def split_vcf_in_parallel(index: int, vcf_loc: str, save_in: str, keep=None, gen
             --from-bp {chr_from} \
             --to-bp {chr_to} \
             --const-fid \
-            --threads 1 \
+            --threads {threads} \
             --memory 2048 \
             --maf 0.01 \
             --snps-only \

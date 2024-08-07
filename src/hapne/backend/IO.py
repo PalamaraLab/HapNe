@@ -173,10 +173,14 @@ class LDLoader(DataHandler):
                                                     data.values[valid_rows, 3].astype(float), 0)
             self.summary_message += f"CCLD: {self.ccld:.5f}. \n"
             self.summary_message += f"The p-value associated with H0 = no structure is {self.pval_no_admixture:.3f}.\n"
-            self.summary_message += f"If H0 is rejected, contractions in the recent past might reflect structure instead of reduced population size."
+            self.summary_message += "If H0 is rejected, contractions in the recent past " \
+                "might reflect structure instead of reduced population size."
             logging.warning(f"CCLD: {self.ccld:.5f}.")
             logging.warning(f"The p-value associated with H0 = no structure is {self.pval_no_admixture:.3f}.")
-            logging.warning(f"If H0 is rejected, contractions in the recent past might reflect structure instead of reduced population size.")
+            logging.warning(
+                           ("If H0 is rejected, contractions in the recent past might reflect "
+                            "structure instead of reduced population size.")
+            )
 
         except FileNotFoundError:
             logging.warning("Bias file not found, running HapNe-LD assuming no admixture LD and high coverage.")
