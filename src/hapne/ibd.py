@@ -32,7 +32,7 @@ def build_hist_in_parallel(region_index: int, config: ConfigParser):
     ibd_folder = config.get("CONFIG", "ibd_files")
     hist_folder = get_hist_folder(config)
     # needs for on macos instead of zcat *
-    command = f"for IBDFILE in `ls {ibd_folder}/{name}.*.ibd.gz`" \
+    command = f"for IBDFILE in `ls {ibd_folder}/{name}*.ibd.gz`" \
         + "; do " \
         + "gunzip -c $IBDFILE; " \
         + "done | " \
@@ -43,7 +43,7 @@ def build_hist_in_parallel(region_index: int, config: ConfigParser):
 
 
 def get_hist_folder(config: ConfigParser):
-    output_folder = config.get("CONFIG", "output_folder") + "/IBD"
+    output_folder = config.get("CONFIG", "output_folder") + "/HIST"
     if not os.path.isdir(output_folder):
         os.makedirs(output_folder)
     return output_folder
