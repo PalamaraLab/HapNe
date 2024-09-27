@@ -167,6 +167,11 @@ if __name__ == "__main__":
     hapne_ibd(config)
 ```
 
+For example:
+```
+python hapne_ibd.py --config_file /path/to/my/config/file/config.txt
+```
+
 ### 4.3 Analyses of ancient samples
 The HapNe package contains a pipeline to easily analyze samples from the ["Allen Ancient DNA Resource" data set](https://reich.hms.harvard.edu/allen-ancient-dna-resource-aadr-downloadable-genotypes-present-day-and-ancient-dna-data).
 After downloading the data, HapNe can take a file with the indices of samples to be analyzed as input (Caribbean_Ceramic_recent.keep in the following example).
