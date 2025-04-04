@@ -70,7 +70,7 @@ population_name=POP
 genome_build=grch37
 ```
 * vcf_file: path to the vcf file (without the .vcf.gz extension)
-* keep (optional): samples to keep, useful to filter out relatives 
+* keep (optional): samples to keep, useful to filter out relatives. The file should contain one id per row
 * map: path to SHAPEIT-format recombination map files. The first column is the physical position (in bp), the second one is the rate (in cM/Mb) and the third one is the genetic position (in cM).
 * pseudo_diploid: False for modern, true for ancient data
 * output_folder: folder where the results will be saved
