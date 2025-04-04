@@ -242,7 +242,8 @@ HapNe creates different folders in the output folder provided in the config file
 ### General Questions
 1. **Can HapNe be used to analyze non-human data?**
 
-Our testing has been limited to human-like evolutionary models. HapNe may also work in non-human data, but we recommend using simulations to test the accuracy under other evolutionary settings. We are also updating the software to allow using non-human genome builds and welcome suggestions on how to facilitate these analyses.
+Our testing has been limited to human-like evolutionary models. HapNe may also work in non-human data, but we recommend using simulations to test the accuracy under other evolutionary settings. We are also updating the software to allow using non-human genome builds and welcome suggestions on how to facilitate these analyses. Currocam implemented a snakemake to run HapNe in non-human organisms. The code can be found here: https://github.com/currocam/hapne-snakemake
+
 
 2. **Can HapNe be used to infer population sizes beyond 100 generations ago?**
 
@@ -281,3 +282,5 @@ R. Fournier, Z. Tsangalidou, D. Reich, P. Palamara. Haplotype-based inference of
 Two scripts of the `convert` module were downloaded from the following repositories and edited to fit into this package:
 - https://github.com/mathii/pyEigenstrat
 - https://github.com/mathii/gdc
+
+
